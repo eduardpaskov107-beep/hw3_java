@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <item city="Москва" street="Тверская улица" house="12" floor="1" />
+    <item city="Санкт-Петербург" street="Невский проспект" house="85" floor="2" />
+    <item city="Новосибирск" street="Красный проспект" house="100" floor="3" />
+    <item city="Екатеринбург" street="Улица Ленина" house="24" floor="4" />
+    <item city="Казань" street="Улица Баумана" house="15" floor="5" />
+    <item city="Москва" street="Арбат" house="10" floor="1" />
+    <item city="Нижний Новгород" street="Большая Покровская" house="42" floor="2" />
+    <item city="Челябинск" street="Кирова, улица" house="110" floor="3" />
+    <item city="Самара" street="Куйбышева, улица" house="55" floor="4" />
+    <item city="Омск" street="Ленина, проспект" house="7" floor="5" />
+    <item city="Ростов-на-Дону" street="Большая Садовая" house="33" floor="1" />
+    <item city="Уфа" street="Проспект Октября" house="88" floor="2" />
+    <item city="Красноярск" street="Мира, проспект" house="102" floor="3" />
+    <item city="Воронеж" street="Кольцовская улица" house="19" floor="4" />
+    <item city="Пермь" street="Комсомольский проспект" house="61" floor="5" />
+    <item city="Волгоград" street="Мира, улица" house="14" floor="1" />
+    <item city="Москва" street="Красная площадь" house="1" floor="2" />
+    <item city="Санкт-Петербург" street="Лиговский проспект" house="150" floor="3" />
+    <item city="Новосибирск" street="Ленина, улица" house="28" floor="4" />
+    <item city="Екатеринбург" street="Малышева, улица" house="71" floor="5" />
+    <item city="Казань" street="Пушкина, улица" house="5" floor="1" />
+    <item city="Москва" street="Кутузовский проспект" house="43" floor="2" />
+    <item city="Нижний Новгород" street="Минина, улица" house="18" floor="3" />
+    <item city="Челябинск" street="Мира, улица" house="99" floor="4" />
+    <item city="Самара" street="Ново-Садовая, улица" house="204" floor="5" />
+    <item city="Омск" street="Маркса, проспект" house="17" floor="1" />
+    <item city="Ростов-на-Дону" street="Пушкинская улица" house="64" floor="2" />
+    <item city="Уфа" street="Салавата Юлаева, проспект" house="31" floor="3" />
+    <item city="Красноярск" street="Мира, проспект" house="115" floor="4" />
+    <item city="Воронеж" street="Плехановская улица" house="22" floor="5" />
+    <item city="Пермь" street="Ленина, улица" house="50" floor="1" />
+    <item city="Волгоград" street="Ленина, проспект" house="87" floor="2" />
+    <item city="Санкт-Петербург" street="Московский проспект" house="98" floor="3" />
+    <item city="Новосибирск" street="Ватутина, улица" house="11" floor="4" />
+    <item city="Екатеринбург" street="Мира, улица" house="45" floor="5" />
+    <item city="Москва" street="Ленинский проспект" house="72" floor="1" />
+</root>
