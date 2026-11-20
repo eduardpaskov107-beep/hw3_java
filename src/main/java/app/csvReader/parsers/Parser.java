@@ -20,7 +20,7 @@ public abstract class Parser {
       if (entry.getValue() > 1) {
         count++;
         sb.append(makeAddressToStr(entry.getKey()) +
-            " " + entry.getValue() + "\n");
+            ", Rereats: " + entry.getValue() + "\n");
       }
     }
     if (count == 0) {
