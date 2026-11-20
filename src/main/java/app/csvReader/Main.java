@@ -1,10 +1,10 @@
 package app.csvReader;
 
-import app.csvReader.userTools.consoleApp;
+import app.csvReader.userTools.ConsoleApp;
 
 public class Main {
   public static void main(String[] args) {
-    consoleApp app = new consoleApp();
+    ConsoleApp app = new ConsoleApp();
     app.start();
   }
 }

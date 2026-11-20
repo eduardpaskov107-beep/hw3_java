@@ -1,75 +1,78 @@
 package app.csvReader.parsers;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import app.csvReader.parsers.data.Address;
+
+import java.io.IOException;
+import java.util.*;
 
 public abstract class Parser {
-  List<String[]> data = new ArrayList<>();
+  final List<Address> data = new ArrayList<>();
 
-  public abstract void parseFile(String fileName);
+  public abstract void parseFile(String fileName) throws IOException;
 
-  private Map<String, Integer> getRepeat() {
-    Map<String, Integer> countRepeat = new HashMap<>();
+  public String getInfo() {
+    StringBuilder sb = new StringBuilder();
+    Map<Address, Integer> repeat = getRepeat();
 
-    for (String[] row : data) {
-      if (countRepeat.containsKey(row[0])) {
-        countRepeat.put(row[0], countRepeat.get(row[0]) + 1);
+    sb.append("Repeat:" + "\n");
+    int count = 0;
+    for (Map.Entry<Address, Integer> entry : repeat.entrySet()) {
+      if (entry.getValue() > 1) {
+        count++;
+        sb.append(makeAddressToStr(entry.getKey()) +
+            " " + entry.getValue() + "\n");
+      }
+    }
+    if (count == 0) {
+      sb.append("No repeats found\n");
+    }
+
+    Map<String, int[]> floorCount = getFloorCount();
+
+    sb.append("Count floor:" + "\n");
+    for (Map.Entry<String, int[]> entry : floorCount.entrySet()) {
+      sb.append("City: " + entry.getKey() + "\n");
+      for (int fl = 0; fl < 5; fl++) {
+        if (entry.getValue()[fl] > 0) {
+          sb.append((fl + 1) + " floor: " + entry.getValue()[fl] + "\n");
+        }
+      }
+    }
+
+    return sb.toString();
+  }
+
+  private Map<Address, Integer> getRepeat() {
+    Map<Address, Integer> countRepeat = new HashMap<>();
+
+    for (Address row : data) {
+      if (countRepeat.containsKey(row)) {
+        countRepeat.put(row, countRepeat.get(row) + 1);
       }
       else {
-        countRepeat.put(row[0], 1);
+        countRepeat.put(row, 1);
       }
     }
 
     return countRepeat;
   }
 
-  private int[] getFloorCount() {
-    int[] floorCount = new int[5];
+  private Map<String, int[]> getFloorCount() {
+    Map<String, int[]> floorCount = new HashMap<>();
 
-    //пока оставим так, чтобы не падал с плохими данными
-    for (String[] row : data) {
-      if (!isNumber(row[3])) {
-        continue;
+    for (Address row : data) {
+      if (!floorCount.containsKey(row.getCity())) {
+        floorCount.put(row.getCity(), new int[5]);
       }
-
-      if (Integer.parseInt(row[3]) <= 0
-          || Integer.parseInt(row[3]) > 5) {
-        continue;
-      }
-      floorCount[Integer.parseInt(row[3]) - 1]++;
+      int[] floors = floorCount.get(row.getCity());
+      floors[row.getFloor() - 1]++;
     }
 
     return floorCount;
   }
 
-  public String getInfo() {
-    StringBuilder sb = new StringBuilder();
-    Map<String, Integer> repeat = getRepeat();
-
-    for (Map.Entry<String, Integer> entry : repeat.entrySet()) {
-      if (entry.getValue() > 1) {
-        sb.append(entry.getKey() + " " + entry.getValue() + "\n");
-      }
-    }
-
-    int[] floorCount = getFloorCount();
-
-    for (int i = 0; i < floorCount.length; i++) {
-      sb.append("Этаж " + (i + 1) + ": " + floorCount[i] + "\n");
-    }
-
-    return sb.toString();
-  }
-
-  //пока костыльный метод)
-  public static boolean isNumber(String str) {
-    try {
-      Integer.parseInt(str);
-      return true;
-    } catch (NumberFormatException e) {
-      return false;
-    }
+  private String makeAddressToStr(Address row) {
+    return row.getCity() + ", " + row.getStreet() + ", "
+        + row.getHouse() + ", " + row.getFloor();
   }
 }
